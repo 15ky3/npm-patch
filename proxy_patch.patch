@@ -1,6 +1,6 @@
-diff -ruN backend/templates/dead_host.conf nginx-proxy-manager-advanced/backend/templates/dead_host.conf
+diff -ruN backend/templates/dead_host.conf backend/templates/dead_host.conf
 --- backend/templates/dead_host.conf	2021-12-31 17:16:38.621290171 +0100
-+++ nginx-proxy-manager-advanced/backend/templates/dead_host.conf	2021-12-31 16:45:24.264056285 +0100
++++ backend/templates/dead_host.conf	2021-12-31 16:45:24.264056285 +0100
 @@ -7,8 +7,8 @@
  {% include "_hsts.conf" %}
  {% include "_forced_ssl.conf" %}
@@ -12,9 +12,9 @@ diff -ruN backend/templates/dead_host.conf nginx-proxy-manager-advanced/backend/
 
  {{ advanced_config }}
 
-diff -ruN backend/templates/default.conf nginx-proxy-manager-advanced/backend/templates/default.conf
+diff -ruN backend/templates/default.conf backend/templates/default.conf
 --- backend/templates/default.conf	2021-12-31 17:16:38.621290171 +0100
-+++ nginx-proxy-manager-advanced/backend/templates/default.conf	2021-12-31 16:45:46.063925660 +0100
++++ backend/templates/default.conf	2021-12-31 16:45:46.063925660 +0100
 @@ -12,8 +12,8 @@
    #listen [::]:80 default;
  {% endif %}
@@ -26,9 +26,9 @@ diff -ruN backend/templates/default.conf nginx-proxy-manager-advanced/backend/te
  {% include "_exploits.conf" %}
 
    include conf.d/include/letsencrypt-acme-challenge.conf;
-diff -ruN backend/templates/proxy_host.conf nginx-proxy-manager-advanced/backend/templates/proxy_host.conf
+diff -ruN backend/templates/proxy_host.conf backend/templates/proxy_host.conf
 --- backend/templates/proxy_host.conf	2021-12-31 17:16:38.621290171 +0100
-+++ nginx-proxy-manager-advanced/backend/templates/proxy_host.conf	2021-12-31 16:46:03.051827790 +0100
++++ backend/templates/proxy_host.conf	2021-12-31 16:46:03.051827790 +0100
 @@ -19,8 +19,8 @@
  proxy_http_version 1.1;
  {% endif %}
@@ -40,9 +40,9 @@ diff -ruN backend/templates/proxy_host.conf nginx-proxy-manager-advanced/backend
 
  {{ advanced_config }}
 
-diff -ruN backend/templates/redirection_host.conf nginx-proxy-manager-advanced/backend/templates/redirection_host.conf
+diff -ruN backend/templates/redirection_host.conf backend/templates/redirection_host.conf
 --- backend/templates/redirection_host.conf	2021-12-31 17:16:38.621290171 +0100
-+++ nginx-proxy-manager-advanced/backend/templates/redirection_host.conf	2021-12-31 16:46:32.459666136 +0100
++++ backend/templates/redirection_host.conf	2021-12-31 16:46:32.459666136 +0100
 @@ -9,8 +9,8 @@
  {% include "_hsts.conf" %}
  {% include "_forced_ssl.conf" %}
@@ -54,9 +54,9 @@ diff -ruN backend/templates/redirection_host.conf nginx-proxy-manager-advanced/b
 
  {{ advanced_config }}
 
-diff -ruN docker/rootfs/etc/logrotate.d/nginx-proxy-manager nginx-proxy-manager-advanced/docker/rootfs/etc/logrotate.d/nginx-proxy-manager
+diff -ruN docker/rootfs/etc/logrotate.d/nginx-proxy-manager docker/rootfs/etc/logrotate.d/nginx-proxy-manager
 --- docker/rootfs/etc/logrotate.d/nginx-proxy-manager	2021-12-31 17:16:38.625290172 +0100
-+++ nginx-proxy-manager-advanced/docker/rootfs/etc/logrotate.d/nginx-proxy-manager	2021-12-31 17:11:38.889293865 +0100
++++ docker/rootfs/etc/logrotate.d/nginx-proxy-manager	2021-12-31 17:11:38.889293865 +0100
 @@ -1,4 +1,4 @@
 -/data/logs/*_access.log /data/logs/*/access.log {
 +/data/logs/json_access.log /data/logs/*/access.log {
@@ -70,9 +70,9 @@ diff -ruN docker/rootfs/etc/logrotate.d/nginx-proxy-manager nginx-proxy-manager-
 -}
 \ No newline at end of file
 +}
-diff -ruN docker/rootfs/etc/nginx/nginx.conf nginx-proxy-manager-advanced/docker/rootfs/etc/nginx/nginx.conf
+diff -ruN docker/rootfs/etc/nginx/nginx.conf docker/rootfs/etc/nginx/nginx.conf
 --- docker/rootfs/etc/nginx/nginx.conf	2021-12-31 17:16:38.625290172 +0100
-+++ nginx-proxy-manager-advanced/docker/rootfs/etc/nginx/nginx.conf	2021-12-31 16:43:53.408667047 +0100
++++ docker/rootfs/etc/nginx/nginx.conf	2021-12-31 16:43:53.408667047 +0100
 @@ -43,10 +43,51 @@
  	proxy_cache_path              /var/lib/nginx/cache/public  levels=1:2 keys_zone=public-cache:30m max_size=192m;
  	proxy_cache_path              /var/lib/nginx/cache/private levels=1:2 keys_zone=private-cache:5m max_size=1024m;
